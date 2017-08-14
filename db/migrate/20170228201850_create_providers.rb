@@ -3,7 +3,7 @@ class CreateProviders < ActiveRecord::Migration[5.0]
     create_table :providers do |t|
       t.integer :user_id, null: false
       t.string :name, null: false
-      t.string :type, null: false
+      t.string :adapter_type, null: false
       t.jsonb :settings, default: {}
 
       t.timestamps

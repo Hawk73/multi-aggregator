@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.4.0"
+ruby '2.4.0'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -43,9 +43,17 @@ gem 'slim-rails', '~> 3.1'
 
 # Flexible authentication solution
 gem 'devise'
+
 # Bootstrap 4 Ruby Gem for Rails
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'bootstrap_form'
+
+# Inspection
+gem 'rubocop', require: false
+
+# Other
+gem 'config'
+gem 'state_machines-activerecord'
 gem 'will_paginate', '~> 3.1.5'
 
 group :development, :test do

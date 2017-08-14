@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 20170301202010) do
   enable_extension "plpgsql"
 
   create_table "providers", force: :cascade do |t|
-    t.integer  "user_id",                 null: false
-    t.string   "name",                    null: false
-    t.string   "type",                    null: false
-    t.jsonb    "settings",   default: {}
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "user_id",                   null: false
+    t.string   "name",                      null: false
+    t.string   "adapter_type",              null: false
+    t.jsonb    "settings",     default: {}
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["user_id", "name"], name: "index_providers_on_user_id_and_name", unique: true, using: :btree
     t.index ["user_id"], name: "index_providers_on_user_id", using: :btree
   end

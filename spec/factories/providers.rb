@@ -1,7 +1,18 @@
 FactoryGirl.define do
   factory :provider do
     sequence(:name) { |n| "provider_name_#{n}" }
-    sequence(:text) { |n| "provider_text_#{n}" }
+    adapter_type :postgresql
+    sequence(:settings) do |n|
+      {
+        database: "database_#{n}",
+        encoding: 'utf8',
+        host: 'localhost',
+        password: 'password',
+        pool: 5,
+        timeout: 5000,
+        username: 'username',
+      }
+    end
 
     user
   end
@@ -11,13 +22,13 @@ end
 #
 # Table name: providers
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer          not null
-#  name       :string           not null
-#  type       :string           not null
-#  settings   :jsonb
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  user_id      :integer          not null
+#  name         :string           not null
+#  adapter_type :string           not null
+#  settings     :jsonb
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 # Indexes
 #
