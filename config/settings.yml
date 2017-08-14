@@ -1,2 +1,8 @@
 adapter_types:
   - postgresql
+
+jobs:
+  expiration_time_in_seconds: 1.day.to_i
+
+redis:
+  url: "<%= ENV['REDIS_URL'] || 'redis://localhost:6379' %>/0"

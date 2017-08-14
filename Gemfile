@@ -12,8 +12,11 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
+
 # Use pg as the database for Active Record
 gem 'pg'
+gem 'redis-rails'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -47,6 +50,12 @@ gem 'devise'
 # Bootstrap 4 Ruby Gem for Rails
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'bootstrap_form'
+
+# Background
+gem 'clockwork'
+gem 'sidekiq'
+gem 'sidekiq-status'
+gem 'foreman'
 
 # Inspection
 gem 'rubocop', require: false
