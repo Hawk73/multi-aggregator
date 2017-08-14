@@ -1,4 +1,0 @@
-= bootstrap_form_for(@snippet,  url: {action: "create"}, inline_errors: true) do |f|
-  = f.text_field :name, label_class: 'required'
-  = f.text_area :text, size: "20x10"
-  = f.submit @snippet.id ? "Save" : "Create"

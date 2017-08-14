@@ -2,21 +2,21 @@ module Macros
   module FeaturesMacros
     extend ActiveSupport::Concern
 
-    def expect_have_snippet_with_comments(snippet, comments = nil)
-      expect_have_snippet(snippet)
+    def expect_have_provider_with_requests(provider, requests = nil)
+      expect_have_provider(provider)
 
-      comments ||= snippet.comments
-      comments.each { |comment| expect_have_comment(comment) }
+      requests ||= provider.requests
+      requests.each { |request| expect_have_request(request) }
     end
 
-    def expect_have_snippet(snippet)
-      expect(page).to have_content(snippet.name)
-      expect(page).to have_content(snippet.text)
+    def expect_have_provider(provider)
+      expect(page).to have_content(provider.name)
+      expect(page).to have_content(provider.text)
     end
 
-    def expect_have_comment(comment)
-      expect(page).to have_content("#{comment.user.email} commented")
-      expect(page).to have_content(comment.text)
+    def expect_have_request(request)
+      expect(page).to have_content("#{request.user.email} requested")
+      expect(page).to have_content(request.text)
     end
   end
 end

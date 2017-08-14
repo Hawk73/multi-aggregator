@@ -1,0 +1,3 @@
+- requests.each do |request|
+  - if request.persisted?
+    = render partial: 'requests/request', locals: {request: request}

@@ -1,0 +1,24 @@
+- @title = "Providers"
+
+.flickr_pagination
+  = will_paginate @providers, container: false
+
+.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th #
+        th Name
+        th User
+    tbody
+      - @providers.each do |provider|
+        tr
+          td
+            = provider.id
+          td
+            = link_to provider.name, provider_path(provider)
+          td
+            = provider.user.email
+
+.flickr_pagination
+  = will_paginate @providers, container: false
