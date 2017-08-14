@@ -1,0 +1,17 @@
+- @title = "View provider"
+
+.panel.panel-default
+  .panel-heading
+    h3.panel-title = "#{@provider.name}"
+  .panel-body
+    pre
+      | #{@provider.text}
+
+hr
+
+/ TODO: add pagination
+= render partial: 'requests/requests', locals: {requests: @provider.requests}
+
+hr
+
+= render "requests/add_request"

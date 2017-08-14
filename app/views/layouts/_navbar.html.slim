@@ -1,16 +1,16 @@
 nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top.bg-inverse
   button.navbar-toggler.navbar-toggler-right aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarsExampleDefault" data-toggle="collapse" type="button" 
     span.navbar-toggler-icon
-  = link_to "Gist", root_path, class: "navbar-brand"
+  = link_to "Multi Aggregator", root_path, class: "navbar-brand"
   #navbarsExampleDefault.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       /TODO: set active by current path
       li.nav-item.active
         = link_to "Home", root_path, class: "nav-link"
       li.nav-item
-        = link_to "View snipets", snippets_path, class: "nav-link"
+        = link_to "View providers", providers_path, class: "nav-link"
       li.nav-item
-        = link_to "Create snipet", new_snippet_path, class: "nav-link"
+        = link_to "Create provider", new_provider_path, class: "nav-link"
 
       - if signed_in?
         li.nav-item

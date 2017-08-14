@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :snippets
+  resources :providers
   devise_for :users, path: 'auth', controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
   root 'home#index'
 
-  resources :snippets do
+  resources :providers do
     member do
-      post :add_comment
+      post :add_request
     end
   end
 end

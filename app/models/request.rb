@@ -1,27 +1,28 @@
-class Comment < ApplicationRecord
+class Request < ApplicationRecord
   default_scope { order(created_at: :asc) }
 
   belongs_to :user
   validates_presence_of :user
 
-  belongs_to :snippet
-  validates_presence_of :snippet
+  belongs_to :provider
+  validates_presence_of :provider
 
   validates :text, presence: { allow_blank: false }
 end
 
 # == Schema Information
 #
-# Table name: comments
+# Table name: requests
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
-#  snippet_id :integer
+#  user_id    :integer          not null
+#  job_id     :integer
 #  text       :text             not null
+#  state      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 # Indexes
 #
-#  index_comments_on_snippet_id  (snippet_id)
+#  index_requests_on_user_id_and_job_id  (user_id,job_id) UNIQUE
 #

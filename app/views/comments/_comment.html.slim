@@ -1,7 +1,0 @@
-li.comment-item(id="comment-id-#{comment.id}")
-  /TODO: add remove link
-  p
-    strong = "#{comment.user.email}"
-    = " commented #{time_ago_in_words(comment.created_at)} ago"
-  p
-    = comment.text
