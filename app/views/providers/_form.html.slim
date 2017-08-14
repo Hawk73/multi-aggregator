@@ -1,8 +1,10 @@
-= bootstrap_form_for(@provider,  url: {action: 'create' }, inline_errors: true) do |f|
+= bootstrap_form_for(@provider,  url: {action: 'create'}, inline_errors: true) do |f|
   = f.text_field :name, label_class: 'required'
   = f.select :adapter_type, adapter_types
 
   = f.text_area :raw_settings, value: @provider.settings, size: '20x10', label_class: 'required'
+  - if @provider.errors[:settings].any?
+    .span.alert.alert-danger = @provider.errors[:settings].join(', ')
   .card
     .card-title
       | Example

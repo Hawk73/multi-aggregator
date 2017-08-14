@@ -1,6 +1,4 @@
 class Provider < ApplicationRecord
-  serialize :settings, JSON
-
   belongs_to :user
   validates_presence_of :user
 
@@ -10,6 +8,9 @@ class Provider < ApplicationRecord
   validates :name, presence: { allow_blank: false }, uniqueness: true
 
   validates :adapter_type, presence: { allow_blank: false }
+
+  serialize :settings, JSON
+  validates :settings, presence: { allow_blank: false }
 end
 
 # == Schema Information
