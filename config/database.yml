@@ -4,14 +4,14 @@ default: &default
   pool: 5
   timeout: 5000
   username: postgres
-  database: gist
+  database: multi-aggregator
 
 development:
   <<: *default
 
 test:
   <<: *default
-  database: gist_test
+  database: multi-aggregator_test
 
 production:
   <<: *default
