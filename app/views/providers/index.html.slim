@@ -9,6 +9,7 @@
       tr
         th #
         th Name
+        th Type
         th User
     tbody
       - @providers.each do |provider|
@@ -17,6 +18,8 @@
             = provider.id
           td
             = link_to provider.name, provider_path(provider)
+          td
+            = provider.adapter_type
           td
             = provider.user.email
 

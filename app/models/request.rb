@@ -4,10 +4,13 @@ class Request < ApplicationRecord
   belongs_to :user
   validates_presence_of :user
 
-  belongs_to :provider
-  validates_presence_of :provider
-
   validates :text, presence: { allow_blank: false }
+
+  state_machine initial: :draft do
+    event(:complete) { transition :processing => :completed }
+    event(:failure) { transition :processing => :failed }
+    event(:process) { transition [:draft, :failed] => :processing }
+  end
 end
 
 # == Schema Information

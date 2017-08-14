@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :providers do
-    member do
-      post :add_request
-    end
-  end
+  resources :providers
+  resources :requests
 end

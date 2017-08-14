@@ -1,4 +1,22 @@
-= bootstrap_form_for(@provider,  url: {action: "create"}, inline_errors: true) do |f|
+= bootstrap_form_for(@provider,  url: {action: 'create' }, inline_errors: true) do |f|
   = f.text_field :name, label_class: 'required'
-  = f.text_area :text, size: "20x10"
-  = f.submit @provider.id ? "Save" : "Create"
+  = f.select :adapter_type, adapter_types
+
+  = f.text_area :raw_settings, value: @provider.settings, size: '20x10', label_class: 'required'
+  .card
+    .card-title
+      | Example
+    .card-block
+      |{
+      |  "database": "multi-aggregator",
+      |  "encoding": "utf8",
+      |  "host": "localhost",
+      |  "password": "password",
+      |  "pool": 5,
+      |  "timeout": 5000,
+      |  "username": "username"
+      | }
+  /TODO: choice partial by selected type
+  /= render partial: 'providers/attributes/postgresql', locals: {f: f}
+
+  = f.submit @provider.id ? 'Save' : 'Create'
