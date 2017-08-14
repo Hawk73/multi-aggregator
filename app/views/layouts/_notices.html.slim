@@ -1,0 +1,9 @@
+- notice = flash[:notice] || @notice
+- if notice
+  .alert.alert-success
+    = notice
+
+- alert = flash[:alert] || @alert
+- if alert
+  .alert.alert-warning
+    = alert
