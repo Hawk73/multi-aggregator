@@ -15,12 +15,14 @@ class ProvidersController < ApplicationController
     @provider.user = current_user
     @provider.settings = retrieve_provider_settings
 
-    if @provider.save
-      flash[:notice] = 'Provider has been created successfully.'
-      redirect_to(@provider)
-    else
-      render('new')
+    @provider.save!
+    flash[:notice] = 'Provider has been created successfully.'
+    redirect_to(@provider)
+  rescue ::ActiveRecord::RecordInvalid, ::ActiveSupport::JSON.parse_error => e
+    if e.is_a?(::ActiveSupport::JSON.parse_error)
+      @provider.errors.add(:settings, 'Неправильный формат. Настройки должны быть заданны в формате JSON.')
     end
+    render('new')
   end
 
   def show
@@ -44,9 +46,6 @@ class ProvidersController < ApplicationController
   end
 
   def retrieve_provider_settings
-      ActiveSupport::JSON.decode(params[:provider][:raw_settings])
-  # TODO: cut the bad code
-  rescue
-    {}
+    ::ActiveSupport::JSON.decode(params[:provider][:raw_settings])
   end
 end
