@@ -1,8 +1,13 @@
 FactoryGirl.define do
   factory :request do
-    sequence(:text) { |n| "request_text_#{n}" }
+    sequence(:name) { |n| "request_name_#{n}" }
+    sequence(:text) do |n|
+      'SELECT db_a.table_a.field_a ' \
+      'FROM db_a.table_a ' \
+      'INNER JOIN db_b.table_b ON (db_a.table_a.id = db_b.table_b.id) '\
+      "WHERE db_b.table_b.field_b > #{n};"
+    end
 
-    provider
     user
   end
 end
