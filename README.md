@@ -1,24 +1,21 @@
-# README
+### Docker
+```
+make build
+make up
+make build-db
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Console
+```
+make bash
+```
 
-Things you may want to cover:
+Run command in docker container
+```
+docker-compose -f docker-compose.yml exec <SERVICE_NAME> <COMMAND>
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+(!) Commands with `bundle exec` require bash
+```
+docker-compose exec app bash -l -c "bundle exec <COMMAND>"
+```
