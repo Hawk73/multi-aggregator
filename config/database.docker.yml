@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  database: multi-aggregator
+  encoding: unicode
+  host: db
+  password: multi-aggregator
+  pool: 5
+  port: 5432
+  username: multi-aggregator
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+  database: multi-aggregator_test
