@@ -1,5 +1,13 @@
 = bootstrap_form_for(@request,  url: {action: 'create'}, inline_errors: true) do |f|
   = f.text_field :name, label_class: 'required'
   = f.text_area :text, size: '20x10', label_class: 'required'
+  .card
+    .card-title
+      | Example
+    .card-block
+      p SELECT db_a.table_a.field_a
+      p FROM db_a.table_a
+      p INNER JOIN db_b.table_b ON (db_a.table_a.id = db_b.table_b.id)
+      p WHERE db_b.table_b.field_b > 10;
 
   = f.submit @request.id ? 'Save' : 'Create'

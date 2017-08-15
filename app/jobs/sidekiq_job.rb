@@ -6,4 +6,8 @@ class SidekiqJob
   end
 
   delegate :logger, to: 'Rails'
+
+  def expiration
+    @expiration ||= Settings.jobs.expiration_time_in_seconds
+  end
 end

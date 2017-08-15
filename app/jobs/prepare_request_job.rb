@@ -1,18 +1,18 @@
-class ProcessRequestJob < SidekiqJob
+class PrepareRequestJob < SidekiqJob
   include ::Sidekiq::Status::Worker
 
-  sidekiq_options retry: false, queue: :process_requests
+  sidekiq_options retry: false, queue: :prepare_requests
 
-  attr_reader :request_processor
+  attr_reader :request_preparer
 
-  def initialize(request_processor: ::Jobs::RequestProcessor.new)
-    @request_processor = request_processor
+  def initialize(request_preparer: ::Jobs::RequestPreparer.new)
+    @request_preparer = request_preparer
   end
 
   def perform(request_id)
     logger.info "Started with request_id=#{request_id}."
     request = retrieve_request(request_id)
-    request_processor.call(request)
+    request_preparer.call(request)
     logger.info 'Completed.'
   rescue Exception => e
     request.failure! if request

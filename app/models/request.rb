@@ -10,8 +10,10 @@ class Request < ApplicationRecord
 
   state_machine initial: :draft do
     event(:complete) { transition :processing => :completed }
-    event(:failure) { transition :processing => :failed }
-    event(:process) { transition [:draft, :failed] => :processing }
+    event(:failure) { transition [:preparing, :prepared, :processing] => :failed }
+    event(:prepare) { transition [:draft, :failed] => :preparing }
+    event(:prepared) { transition [:preparing] => :prepared }
+    event(:process) { transition [:prepared] => :processing }
   end
 end
 
