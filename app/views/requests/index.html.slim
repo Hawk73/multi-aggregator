@@ -1,0 +1,27 @@
+- @title = 'Requests'
+
+.flickr_pagination
+  = will_paginate @requests, container: false
+
+.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th #
+        th Name
+        th User
+        th State
+    tbody
+      - @requests.each do |request|
+        tr
+          td
+            = request.id
+          td
+            = link_to request.name, request_path(request)
+          td
+            = request.user.email
+          td
+            = request.state
+
+.flickr_pagination
+  = will_paginate @requests, container: false

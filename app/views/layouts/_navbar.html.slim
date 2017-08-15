@@ -7,10 +7,18 @@ nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top.bg-inverse
       /TODO: set active by current path
       li.nav-item.active
         = link_to "Home", root_path, class: "nav-link"
-      li.nav-item
-        = link_to "View providers", providers_path, class: "nav-link"
-      li.nav-item
-        = link_to "Create provider", new_provider_path, class: "nav-link"
+
+      li.nav-item.dropdown
+        a#dropdown_provider.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" Providers
+        .dropdown-menu aria-labelledby="dropdown_provider"
+          = link_to 'View providers', providers_path, class: 'dropdown-item'
+          = link_to 'Create provider', new_provider_path, class: 'dropdown-item'
+
+      li.nav-item.dropdown
+        a#dropdown_request.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" Requests
+        .dropdown-menu aria-labelledby="dropdown_request"
+          = link_to 'View requests', requests_path, class: 'dropdown-item'
+          = link_to 'Create request', new_request_path, class: 'dropdown-item'
 
       - if signed_in?
         li.nav-item

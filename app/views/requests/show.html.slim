@@ -1,0 +1,8 @@
+- @title = 'View request'
+
+.panel.panel-default
+  .panel-heading
+    h3.panel-title = "#{@request.name} (#{@request.state})"
+  .panel-body
+    .pre
+      = @request.text
