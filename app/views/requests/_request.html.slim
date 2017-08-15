@@ -1,7 +1,0 @@
-li.request-item(id="request-id-#{request.id}")
-  /TODO: add remove link
-  p
-    strong = "#{request.user.email}"
-    = " requested #{time_ago_in_words(request.created_at)} ago"
-  p
-    = request.text
