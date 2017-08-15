@@ -17,6 +17,4 @@ module Clockwork
       # end
     end
   end
-
-  every(5.seconds, ::ProcessRequestJob)
 end

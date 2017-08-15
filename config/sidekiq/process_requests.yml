@@ -1,0 +1,6 @@
+---
+:verbose: true
+:logfile: ./log/sidekiq_process_requests.log
+:concurrency: 2
+:queues:
+  - process_requests

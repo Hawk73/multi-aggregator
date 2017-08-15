@@ -16,6 +16,9 @@ class RequestsController < ApplicationController
     @request.save!
     flash[:notice] = 'Request has been created successfully.'
 
+    # TODO: run in additional action
+    prepare!
+
     redirect_to(@request)
   rescue ::ActiveRecord::RecordInvalid
     render('new')
@@ -39,5 +42,14 @@ class RequestsController < ApplicationController
 
   def retrieve_request
     ::Request.find(params[:id])
+  end
+
+  def prepare!
+    @request.prepare!
+    enqueue_preparing
+  end
+
+  def enqueue_preparing
+    ::PrepareRequestJob.perform_later(@request.id)
   end
 end
